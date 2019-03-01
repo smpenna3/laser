@@ -15,7 +15,7 @@ class Laser:
         '''
 
         '''
-        self.ser.write(code.encode('ascii'))
+        self.ser.write((code+'\r').encode('ascii'))
 
 
     def left(self, distance=5):
@@ -23,34 +23,36 @@ class Laser:
 
         '''
         self.send_gcode('F1000 G91')
-        self.send_gcode('G01 X-'+distance)
+        self.send_gcode('G01 X-'+str(distance))
 
     def right(self, distance=5):
         '''
 
         '''
         self.send_gcode('F1000 G91')
-        self.send_gcode('G01 X'+distance)
+        self.send_gcode('G01 X'+str(distance))
 
     def up(self, distance=5):
         '''
 
         '''
         self.send_gcode('F1000 G91')
-        self.send_gcode('G01 Y'+distance)
+        self.send_gcode('G01 Y'+str(distance))
 
     def down(self, distance=5):
         '''
 
         '''
         self.send_gcode('F1000 G91')
-        self.send_gcode('G01 U-'+distance)
+        self.send_gcode('G01 Y-'+str(distance))
 
     def home(self):
         '''
 
         '''
+        self.send_gcode('G90')
         self.send_gcode('G0 X0 Y0')
+        self.send_gcode('G91')
 
     def set_home(self):
         '''
