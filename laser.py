@@ -59,3 +59,21 @@ class Laser:
 
         '''
         self.send_gcode('G92 X0 Y0 Z0')
+
+    def laser_on(self):
+        '''
+
+        '''
+        self.send_gcode('M3')
+
+    def laser_off(self):
+        '''
+        
+        '''
+        self.send_gcode('M5')
+
+    def laser_power(self, power):
+        '''
+
+        '''
+        self.send_gcode('S'+str(power))
